@@ -1,0 +1,7 @@
+one:
+  nombre: MyString
+  password_digest: MyString
+
+two:
+  nombre: MyString
+  password_digest: MyString

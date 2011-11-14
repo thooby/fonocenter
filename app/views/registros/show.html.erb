@@ -1,0 +1,44 @@
+<% title "Mostrar registro" %>
+
+<p>
+  <strong>User:</strong>
+  <%= @registro.user.nombre %>
+</p>
+<p>
+  <strong>Fecha:</strong>
+  <%= @registro.fecha %>
+</p>
+<p>
+  <strong>Turno:</strong>
+  <%= @registro.turno.descripcion %>
+</p>
+<p>
+  <strong>Llamada:</strong>
+  <%= @registro.llamada %>
+</p>
+<p>
+  <strong>Ciber:</strong>
+  <%= @registro.ciber %>
+</p>
+<p>
+  <strong>Impresion:</strong>
+  <%= @registro.impresion %>
+</p>
+<p>
+  <strong>Claro:</strong>
+  <%= @registro.claro %>
+</p>
+<p>
+  <strong>Movistar:</strong>
+  <%= @registro.movistar %>
+</p>
+<p>
+  <strong>Lugar:</strong>
+  <%= @registro.lugar.nombre %>
+</p>
+
+<p>
+  <%= link_to "Cambiar", edit_registro_path(@registro) %> |
+  <%= link_to "Eliminar", @registro, :confirm => '¿Está usted seguro?', :method => :delete %> |
+  <%= link_to "Ver lista", registros_path %>
+</p>

@@ -1,0 +1,15 @@
+Ocotal 1
+Somoto 2
+Jalapa 3
+
+Ronald 1
+Wilman 2
+Alexander 3
+Oliver 4
+
+M 1
+T 1
+registros" ("id"  "user_id"  "fecha"  "turno_id"  "llamada"  "ciber"  "impresion"  "claro" "movistar"  "lugar_id" "created_at" "updated_at" 
+             N       1          0        2            3         4         5          6         7          "1"
+
+INSERT INTO "registros" VALUES(2,1,'2011-11-07',2,3456,345,45,2674,3478,1,'2011-11-07 15:52:56.565326','2011-11-07 15:52:56.565326');

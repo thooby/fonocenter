@@ -1,0 +1,12 @@
+<%= form_for @user do |f| %>
+  <%= f.error_messages %>
+  <p>
+    <%= f.label :nombre %><br />
+    <%= f.text_field :nombre %>
+  </p>
+  <p>
+    <%= f.label :password_digest %><br />
+    <%= f.text_field :password_digest %>
+  </p>
+  <p><%= f.submit %></p>
+<% end %>

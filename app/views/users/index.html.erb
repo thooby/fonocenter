@@ -1,0 +1,19 @@
+<% title "Lista de operadores" %>
+
+<table>
+  <tr>
+    <th>Nombre</th>
+    <th>Password Digest</th>
+  </tr>
+  <% for user in @users %>
+    <tr>
+      <td><%= user.nombre %></td>
+      <td><%= user.password_digest %></td>
+      <td><%= link_to "Mostrar", user %></td>
+      <td><%= link_to "Cambiar", edit_user_path(user) %></td>
+      <td><%= link_to "Eliminar", user, :confirm => '¿Está usted seguro?', :method => :delete %></td>
+    </tr>
+  <% end %>
+</table>
+
+<p><%= link_to "Añadir operador", new_user_path %></p>

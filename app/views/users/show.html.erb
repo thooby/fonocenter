@@ -1,0 +1,16 @@
+<% title "Mostrar operador" %>
+
+<p>
+  <strong>Nombre:</strong>
+  <%= @user.nombre %>
+</p>
+<p>
+  <strong>Password Digest:</strong>
+  <%= @user.password_digest %>
+</p>
+
+<p>
+  <%= link_to "Cambiar", edit_user_path(@user) %> |
+  <%= link_to "Eliminar", @user, :confirm => '¿Está usted seguro?', :method => :delete %> |
+  <%= link_to "Ver lista", users_path %>
+</p>

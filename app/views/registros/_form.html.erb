@@ -1,0 +1,38 @@
+<%= form_for @registro do |f| %>
+  <%= f.error_messages %>
+  <p>
+    <b>Operador:</b>
+	<%= @users=User.find(:all,:order=>"nombre")
+	            f.collection_select(:user_id,@users,:id,:nombre, {:selected=>1}) %>
+  
+    <b>Fecha:</b>
+    <%= f.date_select(:fecha) %>
+  
+    <b>Turno:</b>
+    <%= @turnos=Turno.find(:all,:order=>"descripcion")
+	            f.collection_select(:turno_id, @turnos,:id,:descripcion, {:selected=>1}) %></p>
+  <p>
+    <b>Llamadas:</b>
+    <%= f.text_field :llamada %>
+ 
+  
+    <b>Ciber:</b>
+    <%= f.text_field :ciber %>
+  
+    <b>Impresión:</b>
+    <%= f.text_field :impresion %>
+  </p>
+  <p>
+    <b>Recargas Claro:</b>
+    <%= f.text_field :claro %>
+  
+    <b>Recargas Movistar</b>
+    <%= f.text_field :movistar %>
+  </p>
+  <p>
+    <b>Centro de trabajo:</b>
+    <%= @lugars=Lugar.find(:all,:order=>"nombre")
+	            f.collection_select(:lugar_id,@lugars,:id,:nombre, {:selected=>1}) %>
+  </p>
+  <p><%= f.submit %></p>
+<% end %>

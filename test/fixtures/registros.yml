@@ -1,0 +1,21 @@
+one:
+  user_id: 1
+  fecha: 2011-11-07
+  turno_id: 1
+  llamada: 9.99
+  ciber: 9.99
+  impresion: 9.99
+  claro: 9.99
+  movistar: 9.99
+  lugar_id: 1
+
+two:
+  user_id: 1
+  fecha: 2011-11-07
+  turno_id: 1
+  llamada: 9.99
+  ciber: 9.99
+  impresion: 9.99
+  claro: 9.99
+  movistar: 9.99
+  lugar_id: 1

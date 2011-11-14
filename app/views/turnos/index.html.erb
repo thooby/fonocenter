@@ -1,0 +1,17 @@
+<% title "Turnos" %>
+
+<table>
+  <tr>
+    <th>Descripcion</th>
+  </tr>
+  <% for turno in @turnos %>
+    <tr>
+      <td><%= turno.descripcion %></td>
+      <td><%= link_to "Mostrar", turno %></td>
+      <td><%= link_to "Cambiar", edit_turno_path(turno) %></td>
+      <td><%= link_to "Eliminar", turno, :confirm => '¿Está usted seguro?', :method => :delete %></td>
+    </tr>
+  <% end %>
+</table>
+
+<p><%= link_to "Añadir turno", new_turno_path %></p>

@@ -1,0 +1,12 @@
+<% title "Mostrar turno" %>
+
+<p>
+  <strong>Descripción:</strong>
+  <%= @turno.descripcion %>
+</p>
+
+<p>
+  <%= link_to "Cambiar", edit_turno_path(@turno) %> |
+  <%= link_to "Eliminar", @turno, :confirm => '¿Está usted seguro?', :method => :delete %> |
+  <%= link_to "Ver lista", turnos_path %>
+</p>
