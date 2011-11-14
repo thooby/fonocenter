@@ -90,4 +90,6 @@ class RegistrosController < ApplicationController
       format.json { head :ok }
     end
   end
+  def welcome
+  end
 end
