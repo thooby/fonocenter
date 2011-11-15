@@ -20,13 +20,6 @@ class Registro < ActiveRecord::Base
     end
     salida
   end
- def self.trozo(fecha_ini,fecha_fin)
-   registros=self.sel_trozo(fecha_ini,fecha_fin)
-   puts "kkkkkkk"
-   p registros
-   puts "llllllll"
-   registros
- end
   def self.informe_dias(gap)  
     o=ActiveSupport::OrderedHash.new 
     f=Hash.new

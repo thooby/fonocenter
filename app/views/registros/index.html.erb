@@ -23,9 +23,7 @@
       <td><%= registro.claro %></td>
       <td><%= registro.movistar %></td>
       <td><%= registro.lugar.nombre %></td>
-      <td><%= link_to "Mostrar", registro %></td>
-      <td><%= link_to "Cambiar", edit_registro_path(registro) %></td>
-      <td><%= link_to "Eliminar", registro, :confirm => '¿Está usted seguro?', :method => :delete %></td>
+      <%= raw admin_reg(registro) %>
     </tr>
   <% end %>
 </table>

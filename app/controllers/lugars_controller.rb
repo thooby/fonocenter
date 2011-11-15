@@ -1,4 +1,5 @@
 class LugarsController < ApplicationController
+  before_filter :authenticate_user!
   # GET /lugars
   # GET /lugars.json
   def index

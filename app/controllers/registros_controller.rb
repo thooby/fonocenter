@@ -1,4 +1,5 @@
 class RegistrosController < ApplicationController
+  before_filter :authenticate_user!
   # GET /registros
   # GET /registros.json
   def index

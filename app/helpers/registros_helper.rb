@@ -24,5 +24,11 @@ module RegistrosHelper
      end     
      salida
    end
+   def admin_reg(registro)
+     if current_user.nombre=='Fono' then
+     sal = "<td>#{link_to 'Mostrar', registro}</td><td>#{link_to 'Cambiar', edit_registro_path(registro)}</td>
+         <td> #{link_to 'Eliminar', registro, :confirm => '¿Está usted seguro?', :method => :delete}</td>"
+       end
+   end
    
 end
