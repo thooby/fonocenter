@@ -2,7 +2,8 @@ class RegistrosController < ApplicationController
   # GET /registros
   # GET /registros.json
   def index
-    @registros = Registro.all
+    @registros = Registro.page(params[:page])
+    #@registros = Registro.all
     respond_to do |format|
       format.html # index.html.erb
       format.json { render :json => @registros }
@@ -67,7 +68,6 @@ class RegistrosController < ApplicationController
   # PUT /registros/1.json
   def update
     @registro = Registro.find(params[:id])
-
     respond_to do |format|
       if @registro.update_attributes(params[:registro])
         format.html { redirect_to @registro, :notice => 'Registro was successfully updated.' }

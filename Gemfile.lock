@@ -116,6 +116,7 @@ GEM
       multi_json (>= 1.0.2)
     warden (1.0.3)
       rack (>= 1.0.0)
+    will_paginate (3.0.2)
 
 PLATFORMS
   ruby
@@ -133,3 +134,4 @@ DEPENDENCIES
   sass-rails (~> 3.1.4)
   sqlite3
   uglifier (>= 1.0.3)
+  will_paginate (> 3.0)

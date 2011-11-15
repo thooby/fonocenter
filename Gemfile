@@ -36,3 +36,4 @@ gem "mocha", :group => :test
 gem 'rails-i18n'
 gem 'builder'
 gem 'devise'
+gem 'will_paginate', '>3.0'

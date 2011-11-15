@@ -1,44 +1,49 @@
 <% title "Mostrar registro" %>
 
-<p>
-  <strong>User:</strong>
+  <table id="show">
+  <tr><td><h3>Datos generales</h3><td><strong>Operador:</strong>
   <%= @registro.user.nombre %>
-</p>
-<p>
+  </td><td><strong>Lugar:</strong>
+  <%= @registro.lugar.nombre %>
+</td><td>
   <strong>Fecha:</strong>
   <%= @registro.fecha %>
-</p>
-<p>
-  <strong>Turno:</strong>
-  <%= @registro.turno.descripcion %>
-</p>
-<p>
-  <strong>Llamada:</strong>
-  <%= @registro.llamada %>
-</p>
-<p>
-  <strong>Ciber:</strong>
-  <%= @registro.ciber %>
-</p>
-<p>
-  <strong>Impresion:</strong>
-  <%= @registro.impresion %>
-</p>
-<p>
-  <strong>Claro:</strong>
-  <%= @registro.claro %>
-</p>
-<p>
-  <strong>Movistar:</strong>
-  <%= @registro.movistar %>
-</p>
-<p>
-  <strong>Lugar:</strong>
-  <%= @registro.lugar.nombre %>
-</p>
 
-<p>
+
+  </td>
+  <td><strong>Turno:</strong>
+  <%= @registro.turno.descripcion %></td></tr>
+
+  <tr><td><h3>Ventas directas</h3></td>
+  <td><strong>Llamadas:</strong>
+  <%= @registro.llamada %>
+
+
+  </td>
+  <td><strong>Internet:</strong>
+  <%= @registro.ciber %>
+
+
+  </td>
+  <td><strong>Impresion:</strong>
+  <%= @registro.impresion %></td></tr>
+
+  <tr><td><h3>Recargas</h3>
+  </td>
+  <td><strong>Claro:</strong>
+  <%= @registro.claro %>
+
+
+  </td>
+  <td><strong>Movistar:</strong>
+  <%= @registro.movistar %></td></tr>
+</table>
+
+
+  
+
+
   <%= link_to "Cambiar", edit_registro_path(@registro) %> |
   <%= link_to "Eliminar", @registro, :confirm => '¿Está usted seguro?', :method => :delete %> |
   <%= link_to "Ver lista", registros_path %>
-</p>
+
