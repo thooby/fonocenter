@@ -15,7 +15,7 @@ module RegistrosHelper
      users_dic
    end
    def tabla_suma
-     data = [@stats,@stats2,@stats3]
+     data = [@stats3,@stats,@stats2]
      salida=""
      data.each do |h|
        salida += '<h2>'+h[0]+'</h2><table class="index">'
@@ -24,4 +24,5 @@ module RegistrosHelper
      end     
      salida
    end
+   
 end

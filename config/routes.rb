@@ -3,6 +3,11 @@ Fonocenter::Application.routes.draw do
 
   resources :registros do
     get :stats, :on => :collection
+    get :find, :on => :collection
+    post :find, :action => :stats, :on => :collection
+    get :trozo, :on => :collection
+    post :trozo, :action => :presenta_trozo, :on => :collection
+    
   end 
   resources :registros
   resources :users

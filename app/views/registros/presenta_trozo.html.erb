@@ -1,0 +1,33 @@
+<% title "Lista de Registros" %>
+
+<table class="index">
+  <tr>
+    <th>Operador</th>
+    <th>Fecha</th>
+    <th>Turno</th>
+    <th>Llamada</th>
+    <th>Internet</th>
+    <th>Impre </th>
+    <th>Claro</th>
+    <th>Movistar</th>
+    <th>Lugar</th>
+  </tr>
+  <% for registro in @registros %>
+    <tr>
+      <td><%= registro.user.nombre %></td>
+      <td><%= registro.fecha %></td>
+      <td><%= registro.turno.descripcion[0,1] %></td>
+      <td><%= registro.llamada %></td>
+      <td><%= registro.ciber %></td>
+      <td><%= registro.impresion %></td>
+      <td><%= registro.claro %></td>
+      <td><%= registro.movistar %></td>
+      <td><%= registro.lugar.nombre %></td>
+      <td><%= link_to "Mostrar", registro %></td>
+      <td><%= link_to "Cambiar", edit_registro_path(registro) %></td>
+      <td><%= link_to "Eliminar", registro, :confirm => '¿Está usted seguro?', :method => :delete %></td>
+    </tr>
+  <% end %>
+</table>
+
+<p><%= link_to "Añadir registro", new_registro_path %></p>

@@ -9,11 +9,23 @@ class RegistrosController < ApplicationController
       format.json { render :json => @registros }
     end
   end
+  def trozos
+  end
+  def presenta_trozo
+    fechas = params[:registro]
+    fecha_ini = Date.new(fechas['fecha_ini(1i)'].to_i,fechas['fecha_ini(2i)'].to_i,fechas['fecha_ini(3i)'].to_i)
+    fecha_fin = Date.new(fechas['fecha_fin(1i)'].to_i,fechas['fecha_fin(2i)'].to_i,fechas['fecha_fin(3i)'].to_i)
+    @registros = Registro.sel_trozo(fecha_ini,fecha_fin)
+    respond_to do |format|
+      format.html # index.html.erb
+      format.json { render :json => @registros }
+    end
+  end
   def stats
+    x=Date.new(2011,params["registro"]["fecha(2i)"].to_i,1)
     @users = User.all
     @stats = Registro.informe
     @stats2 = Registro.informe_dias(30)
-    x=Date.new(2011,9,4)
     @stats3 = Registro.informe_mes(x)
     respond_to do |format|
       format.html # stats.html.erb
@@ -91,5 +103,7 @@ class RegistrosController < ApplicationController
     end
   end
   def welcome
+  end
+  def find
   end
 end
