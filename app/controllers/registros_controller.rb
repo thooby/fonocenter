@@ -1,5 +1,6 @@
 class RegistrosController < ApplicationController
   before_filter :authenticate_user!
+  before_filter :authenticate_admin_user!,  :except => [:index, :show, :new, :create, :welcome]
   # GET /registros
   # GET /registros.json
   def index

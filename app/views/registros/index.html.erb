@@ -1,8 +1,13 @@
 <% title "Lista de Registros" %>
 <%= will_paginate @registros %>
+<% if (current_user.nombre != "Fono") then %>
+<h2>Registros de <%= current_user.nombre %></h2>
+<% end %>
 <table class="index">
   <tr>
+	<% if (current_user.nombre=='Fono')  then %>
     <th>Operador</th>
+    <% end %>
     <th>Fecha</th>
     <th>Turno</th>
     <th>Llamada</th>
@@ -13,8 +18,11 @@
     <th>Lugar</th>
   </tr>
   <% for registro in @registros %>
+    <% if (current_user.nombre=='Fono') or  (current_user.nombre==registro.user.nombre) then %>
     <tr>
-      <td><%= registro.user.nombre %></td>
+	  <% if (current_user.nombre=='Fono')  then %>	
+        <td><%= registro.user.nombre %></td>
+      <% end %>
       <td><%= registro.fecha %></td>
       <td><%= registro.turno.descripcion[0,1] %></td>
       <td><%= registro.llamada %></td>
@@ -25,6 +33,7 @@
       <td><%= registro.lugar.nombre %></td>
       <%= raw admin_reg(registro) %>
     </tr>
+    <% end %>
   <% end %>
 </table>
 
