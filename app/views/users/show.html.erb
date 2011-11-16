@@ -1,14 +1,40 @@
-<% title "Mostrar operador" %>
+<% title "Operador"  %>
+<h3>Nombre: <span class="nombre"><%= @user.nombre %></span></h3>
+<table id="show">
+  <tr><th></th>
+	<th>Llamadas</th>
+	<th>Internet</th>
+	<th>Impresion</th>
+	<th>Claro</th>
+	<th>Movistar</th>
+  </tr>
+  <tr>
+	<td>
+	  Media
+	</td>
+	<% resumen_media.each do |ave| %>
+      <td><%= ave.to_i %></td>
+    <% end %>
+  </tr>
+<tr>
+	<td>
+	  Máximo
+	</td>
+	<% resumen_max.each do |maxi| %>
+      <td><%= maxi.to_i %></td>
+    <% end %>
+  </tr>
+</table>
 
-<p>
-  <strong>Nombre:</strong>
-  <%= @user.nombre %>
-</p>
-<p>
+<h2>Ultimos turnos de <span class="nombre"><%= @user.nombre %></span></h2>
+<table>
+<%= raw lista_corta_html%>
+</table>
+<% if (current_user.nombre=='Fono')  then %>
+<br />
   <strong>Password Digest:</strong>
   <%= @user.password_digest %>
-</p>
-
+<% end %>
 <p>
   <%= link_to "Cambiar", edit_user_path(@user) %> |
   <%= link_to "Eliminar", @user, :confirm => '¿Está usted seguro?', :method => :delete %> |

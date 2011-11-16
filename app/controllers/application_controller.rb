@@ -6,7 +6,7 @@ class ApplicationController < ActionController::Base
       end
     end
     def authenticate_admin_user!
-      if current_user.nombre != 'Fono'
+      if (current_user.nombre != 'Fono' )
         redirect_to root_url, :alert => "No tiene privilegios para ir a esa página"
       end
     end
