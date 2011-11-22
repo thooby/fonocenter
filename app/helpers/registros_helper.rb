@@ -15,7 +15,7 @@ module RegistrosHelper
      users_dic
    end
    def tabla_suma
-     data = [@stats3,@stats,@stats2]
+     data = [@stats]
      salida=""
      data.each do |h|
        salida += '<h2>'+h[0]+'</h2><table class="index">'
@@ -30,6 +30,4 @@ module RegistrosHelper
          <td> #{link_to 'Eliminar', registro, :confirm => '¿Está usted seguro?', :method => :delete}</td>"
        end
    end
-   
-   
 end

@@ -1,6 +1,12 @@
-<h1> En construcción </h1>
+<h1>Estadísticas</h1>
 <%= form_for(:registro) do |form| %>
-  <b>Informe mensual</b><br />
+  <%= form.radio_button :stat_op, 4 %> Resultado global<br/>
+  <%= form.radio_button :stat_op, 1 %> Resultados del mes<br/>
+  <%= form.radio_button :stat_op, 3 %> Resultado de los últimos 30 días<br/>
+  <%= form.radio_button :stat_op, 5 %> Resultado del día<br/>
+  <%= form.radio_button :stat_op, 2 %> Resultados del mes hasta el dia<br/>
+  <%= form.radio_button :stat_op, 6 %> Resultado resumen del mes hasta el dia<br/>
   <%= form.date_select :fecha %><br />
+
   <%= submit_tag 'submit' %>
 <% end %>
