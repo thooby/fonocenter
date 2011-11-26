@@ -1,9 +1,15 @@
 <%= form_for @registro do |f| %>
   <%= f.error_messages %>
+ 
   <p>
     <b>Operador:</b>
+<% if current_user.nombre == 'Fono'%>
 	<%= @users=User.find(:all,:order=>"nombre")
-	            f.collection_select(:user_id,@users,:id,:nombre, {:selected=>1}) %>
+	            f.collection_select(:user_id, @users,:id,:nombre, {:selected=>1}) %>
+	<% else %>
+	  <%= current_user.nombre %>
+	  <%= f.hidden_field :user_id, :value => current_user.id %>
+	<% end %>
   
     <b>Fecha:</b>
     <%= f.date_select(:fecha) %>
@@ -32,7 +38,7 @@
   <p>
     <b>Centro de trabajo:</b>
     <%= @lugars=Lugar.find(:all,:order=>"nombre")
-	            f.collection_select(:lugar_id,@lugars,:id,:nombre, {:selected=>1}) %>
+	            f.collection_select(:lugar_id,@lugars,:id, :nombre, {:selected=>1}) %>
   </p>
   <p><%= f.submit %></p>
 <% end %>
