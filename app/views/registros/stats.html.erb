@@ -5,25 +5,29 @@
       <h1>Informe del día <%= @x %></h1>
       <table id="show">
       <tr><th>Centro</th><th>Ingresos regulares</th><th>Recargas Claro</th><th>Recarga Movistar</th></tr>
-      <tr>
+      
       <% @stats.each do |z| %>
+        <tr>
         <% z.each do |w|%>
           <td><%= w %></td>
         <% end %>
-      <% end %>
      </tr>
+      <% end %>
+
     </table>
   <% elsif @discri==6 %>
-    <table >
-	<b><%= @stats[0] %><br />
+	<p><h5><%= @stats[0] %></h5>
+    <table id="show">
     <tr><th>Centro</th><th>Ingresos regulares</th><th>Recargas Claro</th><th>Recarga Movistar</th></tr>
-    <tr><td></td>
-     <% @stats[1..-1].each do |z| %>
     
-      <td><%= z %></td>
-
+     <% @stats[1].each do |z| %>
+     <tr>
+      <% z.each do |z1|%>
+      <td><%= z1 %></td>
+       <% end %>
+     </tr>
      <% end %>
-    </tr>
+    
    </table>
 <% else %>
  Error <%= @discri %>

@@ -5,7 +5,13 @@ class Registro < ActiveRecord::Base
   belongs_to  :lugar
   belongs_to  :turno
   scope :ultimos_n_dias, lambda { |dias| where('(julianday("now")-julianday("fecha")) < ?',dias) }
-  scope :sel_trozo,lambda {|fech1,fech2| where("(date('registros'.'fecha') >= ?) and (date('registros'.'fecha') <= ?)",fech1,fech2)}
+  scope :sel_trozo,lambda {|fech1,fech2| where("(date('registros'.'fecha') >= ?) and 
+                                                (date('registros'.'fecha') <= ?)",
+                                                fech1,fech2)}
+  scope :sel_trozo_lugar,lambda {|fech1,fech2,lugar_id| where("(date('registros'.'fecha') >= ?) and 
+                                                               (date('registros'.'fecha') <= ?) and
+                                                               ('registros'.'lugar_id' = ?)",
+                                                               fech1,fech2,lugar_id)}
   scope :sel_dia,lambda {|fech1| where("(date('registros'.'fecha') = ?) ",fech1)}
   
     @mes_nom = {
@@ -72,19 +78,27 @@ class Registro < ActiveRecord::Base
   end
   def self.informe_resumen_hasta_dia(gap)    
     o=ActiveSupport::OrderedHash.new 
-    salida=["Informe resumen del mes de #{@mes_nom[gap.month]} hasta el dia #{gap}"]
+    centros = Lugar.all
+    subtitulo=["Informe resumen del mes de #{@mes_nom[gap.month]} hasta el dia #{gap}"]
     rubros = ['llamada','ciber','impresion','claro','movistar']
-    rubros.each do |rubro|
-      f = self.sel_trozo(gap.at_beginning_of_month,gap).sum(rubro) 
-      salida << f   
+    salida2 = []
+    centros.each do |centro|
+      salida = []
+      p 'x355'
+      rubros.each do |rubro|
+        f = self.sel_trozo_lugar(gap.at_beginning_of_month,gap,centro.id).sum(rubro)
+        p f 
+        salida << f   
+      end
+      salida1=[]
+      salida1[0] = centro.nombre
+      salida1[1] = salida[0]
+      salida1[2] = salida[1] + salida[2] + salida[3]
+      salida1[3] = salida[4]
+      salida1[4] = salida[5]
+      salida2 << salida1
     end
-    p salida
-    salida1=[]
-    salida1[0] = salida[0]
-    salida1[1] = salida[1] + salida[2] + salida[3]
-    salida1[2] = salida[4]
-    salida1[3] = salida[5]
-    salida1 
+    salida2 = [subtitulo,salida2]
   end
   def self.informe_dia(fecha)
     lista_dia = self.sel_dia(fecha).order(:lugar_id,:turno_id)
@@ -106,7 +120,6 @@ class Registro < ActiveRecord::Base
       end
     end
     @salida << @sal_item
-    p @salida
     @salida
   end
   def self.informe_dias(gap)  
