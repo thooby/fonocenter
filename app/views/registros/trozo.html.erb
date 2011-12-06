@@ -1,6 +1,8 @@
 <h1> Encontrar registros entre dos fechas (ambas incluídas)</h1>
 <div id="query">
 <%= form_for(:registro) do |form| %>
+<%= @lugars=Lugar.find(:all,:order=>"nombre")
+   form.collection_select(:lugar_id,@lugars,:id, :nombre, {:selected=>1}) %><br />
   <b>Fecha inicial:</b> <%= form.date_select :fecha_ini %><br />
   <b>Fecha final:</b><%= form.date_select :fecha_fin %>
   <p><%= submit_tag 'Enviar' %></p>

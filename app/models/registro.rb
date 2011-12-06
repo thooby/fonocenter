@@ -5,9 +5,10 @@ class Registro < ActiveRecord::Base
   belongs_to  :lugar
   belongs_to  :turno
   scope :ultimos_n_dias, lambda { |dias| where('(julianday("now")-julianday("fecha")) < ?',dias) }
-  scope :sel_trozo,lambda {|fech1,fech2| where("(date('registros'.'fecha') >= ?) and 
-                                                (date('registros'.'fecha') <= ?)",
-                                                fech1,fech2)}
+  scope :sel_trozo,lambda {|fech1,fech2,lug_id| where("(date('registros'.'fecha') >= ?) and 
+                                                (date('registros'.'fecha') <= ?) and
+                                                (lugar_id = ?)",
+                                                fech1,fech2,lug_id)}
   scope :sel_trozo_lugar,lambda {|fech1,fech2,lugar_id| where("(date('registros'.'fecha') >= ?) and 
                                                                (date('registros'.'fecha') <= ?) and
                                                                ('registros'.'lugar_id' = ?)",

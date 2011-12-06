@@ -14,10 +14,10 @@ class RegistrosController < ApplicationController
   def trozos
   end
   def presenta_trozo
-    fechas = params[:registro]
-    fecha_ini = Date.new(fechas['fecha_ini(1i)'].to_i,fechas['fecha_ini(2i)'].to_i,fechas['fecha_ini(3i)'].to_i)
-    fecha_fin = Date.new(fechas['fecha_fin(1i)'].to_i,fechas['fecha_fin(2i)'].to_i,fechas['fecha_fin(3i)'].to_i)
-    @registros = Registro.sel_trozo(fecha_ini,fecha_fin)
+    datos = params[:registro]
+    fecha_ini = Date.new(datos['fecha_ini(1i)'].to_i,datos['fecha_ini(2i)'].to_i,datos['fecha_ini(3i)'].to_i)
+    fecha_fin = Date.new(datos['fecha_fin(1i)'].to_i,datos['fecha_fin(2i)'].to_i,datos['fecha_fin(3i)'].to_i)
+    @registros = Registro.sel_trozo(fecha_ini,fecha_fin,datos['lugar_id'])
     respond_to do |format|
       format.html # index.html.erb
       format.json { render :json => @registros }
