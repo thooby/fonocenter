@@ -4,6 +4,7 @@
 	  <li><%= link_to "Introducir registros", new_registro_path %></li>
 	  <% if (current_user.nombre=='Fono')  then %>
 	    <li><%= link_to "Introducir operadores", new_user_path %></li>
+	    <li><%= link_to "Lista de operadores", users_path %></li>
 	    <li><%= link_to "Algunas estadisticas", find_registros_path %></li>
 	    <li><%= link_to "Registros entre fechas", trozo_registros_path %></li>
 	  <% end %>

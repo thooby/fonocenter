@@ -2,6 +2,7 @@
 <%= will_paginate @registros %>
 <% if (current_user.nombre != "Fono") then %>
 <h2>Registros de <%= current_user.nombre %></h2>
+<%= link_to "Datos Personales", current_user %>
 <% end %>
 <table class="index">
   <tr>
