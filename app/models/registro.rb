@@ -69,9 +69,9 @@ class Registro < ActiveRecord::Base
     salida=["Informe del mes de #{@mes_nom[gap.month]} hasta el dia #{gap}"]
     rubros = ['llamada','ciber','impresion','claro','movistar']
     rubros.each do |rubro|
-      f['fin'] = self.sel_trozo(gap.at_beginning_of_month,gap).sum(rubro)    
+      f['fin'] = self.sel_trozo(gap.at_beginning_of_month,gap,1).sum(rubro)    
       o['inicio'] = rubro.capitalize
-      z = o.merge(self.sel_trozo(gap.at_beginning_of_month,gap).sum(rubro, :group => 'user_id').merge(f))
+      z = o.merge(self.sel_trozo(gap.at_beginning_of_month,gap,1).sum(rubro, :group => 'user_id').merge(f))
       salida <<z
     end
     salida
