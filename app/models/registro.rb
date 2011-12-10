@@ -30,12 +30,12 @@ class Registro < ActiveRecord::Base
       12 => "Diciembre"
    }
   
-  def self.informe_op(gap,stat_op)   
+  def self.informe_op(gap,stat_op,lugar_id)   
     case stat_op
       when 1
-        @sal =  self.informe_mes(gap)   
+        @sal =  self.informe_mes(gap,lugar_id)   
       when 2
-        @sal = self.informe_hasta_dia(gap) 
+        @sal = self.informe_hasta_dia(gap,lugar_id) 
       when 3
         @sal = self.informe_dias(30)
       when 4
@@ -49,29 +49,31 @@ class Registro < ActiveRecord::Base
       end
     end
         
-  def self.informe_mes(gap) 
+  def self.informe_mes(gap,lugar_id) 
    
     o=ActiveSupport::OrderedHash.new 
     f=Hash.new
-    salida=["Informe del mes de #{@mes_nom[gap.month]}"] 
+    chapu = ['Todos','Ocotal','Somoto','Jalapa']
+    salida=["Centro de #{chapu[lugar_id]} <br />Informe del mes de #{@mes_nom[gap.month]} "] 
     rubros = ['llamada','ciber','impresion','claro','movistar']
     rubros.each do |rubro|
-      f['fin'] = self.sel_trozo(gap.at_beginning_of_month,gap.at_end_of_month).sum(rubro)    
+      f['fin'] = self.sel_trozo(gap.at_beginning_of_month,gap.at_end_of_month,lugar_id).sum(rubro)    
       o['inicio'] = rubro.capitalize
-      z = o.merge(self.sel_trozo(gap.at_beginning_of_month,gap.at_end_of_month).sum(rubro, :group => 'user_id').merge(f))
+      z = o.merge(self.sel_trozo(gap.at_beginning_of_month,gap.at_end_of_month,lugar_id).sum(rubro, :group => 'user_id').merge(f))
       salida <<z
     end
     salida
   end
-  def self.informe_hasta_dia(gap)    
+  def self.informe_hasta_dia(gap,lugar_id)
+     chapu = ['Todos','Ocotal','Somoto','Jalapa']   
     o=ActiveSupport::OrderedHash.new 
     f=Hash.new
-    salida=["Informe del mes de #{@mes_nom[gap.month]} hasta el dia #{gap}"]
+    salida=["Centro de #{chapu[lugar_id]}<br />Informe del mes de #{@mes_nom[gap.month]} hasta el dia #{gap}"]
     rubros = ['llamada','ciber','impresion','claro','movistar']
     rubros.each do |rubro|
-      f['fin'] = self.sel_trozo(gap.at_beginning_of_month,gap,1).sum(rubro)    
+      f['fin'] = self.sel_trozo(gap.at_beginning_of_month,gap,lugar_id).sum(rubro)    
       o['inicio'] = rubro.capitalize
-      z = o.merge(self.sel_trozo(gap.at_beginning_of_month,gap,1).sum(rubro, :group => 'user_id').merge(f))
+      z = o.merge(self.sel_trozo(gap.at_beginning_of_month,gap,lugar_id).sum(rubro, :group => 'user_id').merge(f))
       salida <<z
     end
     salida

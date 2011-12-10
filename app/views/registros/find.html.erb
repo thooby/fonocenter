@@ -1,5 +1,8 @@
 <h1>Estadísticas</h1>
-<%= form_for(:registro) do |form| %>
+  <%= form_for(:registro) do |form| %>
+   <b>Centro de trabajo: </b>
+  <%= @lugars=Lugar.find(:all,:order=>"nombre")
+      form.collection_select(:lugar_id,@lugars,:id, :nombre, {:selected=>1}) %><br />
   <%= form.radio_button :stat_op, 4 %> Resultado global<br/>
   <%= form.radio_button :stat_op, 1 %> Resultados del mes<br/>
   <%= form.radio_button :stat_op, 3 %> Resultado de los últimos 30 días<br/>

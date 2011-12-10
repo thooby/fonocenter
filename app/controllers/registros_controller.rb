@@ -26,8 +26,9 @@ class RegistrosController < ApplicationController
   def stats
     @x=Date.new(params["registro"]["fecha(1i)"].to_i,params["registro"]["fecha(2i)"].to_i,params["registro"]["fecha(3i)"].to_i)
     @discri = params["registro"]["stat_op"].to_i
+    lugar_id = params["registro"]["lugar_id"].to_i
     @users = User.all
-    @stats = Registro.informe_op(@x, @discri)
+    @stats = Registro.informe_op(@x, @discri,lugar_id)
     respond_to do |format|
       format.html # stats.html.erb
       format.json { render :json => @stats }
